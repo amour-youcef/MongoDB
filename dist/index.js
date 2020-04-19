@@ -17,7 +17,7 @@ mongoose_1.default.connect(uri, (err) => {
         console.log("Mongo Data base connected successfuly");
 });
 app.get("/", (req, resp) => {
-    resp.send("Hello Express");
+    resp.send("Hello css117");
 });
 app.get("/books", (req, resp) => {
     book_model_1.default.find((err, books) => {
@@ -67,14 +67,12 @@ app.delete("/books/:id", (req, resp) => {
     });
 });
 /* Requête HTTP GET http://localhost:8085/pbooks?page=0&size=5 */
-app.get("/pbooks", (req, resp) => {
-    let p = parseInt(req.query.page || 1);
-    let size = parseInt(req.query.size || 5);
-    book_model_1.default.paginate({}, { page: p, limit: size }, function (err, result) { if (err)
-        resp.status(500).send(err);
-    else
-        resp.send(result); });
-});
+// app.get("/pbooks", (req: Request, resp: Response) => {
+//     let p: number = parseInt(req.query.page || 1);
+//     let size: number = parseInt(req.query.size || 5);
+//     Book.paginate({}, { page: p, limit: size },
+//         function (err, result) { if (err) resp.status(500).send(err); else resp.send(result); });
+// });
 app.listen(8085, () => {
     console.log("Serve startd");
 });

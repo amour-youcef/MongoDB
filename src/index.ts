@@ -4,7 +4,9 @@ import Book from "./book.model";
 import bodyParser from "body-parser";
 
 const app = express();
+
 app.use(bodyParser.json());
+
 const uri = "mongodb://localhost:27017/acs";
 
 mongoose.connect(uri, (err) => {
@@ -13,7 +15,7 @@ mongoose.connect(uri, (err) => {
 });
 
 app.get("/", (req: Request, resp: Response) => {
-    resp.send("Hello Express");
+    resp.send("Hello css117");
 });
 
 app.get("/books", (req: Request, resp: Response) => {
@@ -59,12 +61,12 @@ app.delete("/books/:id", (req: Request, resp: Response) => {
 });
 
 /* Requête HTTP GET http://localhost:8085/pbooks?page=0&size=5 */
-app.get("/pbooks", (req: Request, resp: Response) => {
-    let p: number = parseInt(req.query.page || 1);
-    let size: number = parseInt(req.query.size || 5);
-    Book.paginate({}, { page: p, limit: size },
-        function (err, result) { if (err) resp.status(500).send(err); else resp.send(result); });
-});
+// app.get("/pbooks", (req: Request, resp: Response) => {
+//     let p: number = parseInt(req.query.page || 1);
+//     let size: number = parseInt(req.query.size || 5);
+//     Book.paginate({}, { page: p, limit: size },
+//         function (err, result) { if (err) resp.status(500).send(err); else resp.send(result); });
+// });
 
 app.listen(8085, () => {
     console.log("Serve startd");
